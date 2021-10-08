@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+{% block body %}
+
+	<!-- ======= Hero Section ======= -->
+	<section id="hero">
+		<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+			<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+			<div
+				class="carousel-inner" role="listbox">
+
+				<!-- Slide 1 -->
+				<div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg)">
+					<div class="container">
+						<h1>CIDIS</h1>
+						<h3 style="color: black;">Centre D'imagerie Diagnostique et Interventionnelle De Soumbedioune</h3>
+						<a href="#about" class="btn-get-started scrollto">Indentification</a>
+					</div>
+				</div>
+
+				<!-- Slide 2 -->
+				<div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg)">
+					<div class="container">
+						<h1>CIDIS</h1>
+						<h3 style="color: black;">Centre D'imagerie Diagnostique et Interventionnelle De Soumbedioune</h3>
+						<a href="#about" class="btn-get-started scrollto">Connexion</a>
+					</div>
+				</div>
+
+				<!-- Slide 3 -->
+				<div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg)">
+					<div class="container">
+						<h1>CIDIS</h1>
+						<h3 style="color: black;">Centre D'imagerie Diagnostique et Interventionnelle De Soumbedioune</h3>
+						<a href="#about" class="btn-get-started scrollto">Connexion</a>
+					</div>
+				</div>
+
+			</div>
+
+			<a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+			</a>
+
+			<a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+				<span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+			</a>
+
+		</div>
+	</section>
+	<!-- End Hero -->
+	<form method="post">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		{% if app.user %}
+			<div class="mb-3 mt-3">
+				Vous êtes connecté en tant que
+				{{ app.user.username }},
+				<a href="{{ path('app_logout') }}">Se déconnecter</a>
+			</div>
+		{% endif %}
+
+		<section id="appointment" class="appointment section-bg">
+			<div class="container" data-aos="fade-up">
+				<div class="section-title">
+					<h2>Veuillez vous connceter</h2>
+				</div>
+				<label for="inputEmail"></label>
+				<center><input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control w-50" autocomplete="email" required autofocus placeholder="Email"></center>
+				<label for="inputPassword"></label>
+				<center><input type="password" name="password" id="inputPassword" class="form-control w-50" autocomplete="current-password" required placeholder="Password"></center>
+
+				<input
+				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+
+				{#
+								        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+								        See https://symfony.com/doc/current/security/remember_me.html
+								
+								        <div class="checkbox mb-3">
+								            <label>
+								                <input type="checkbox" name="_remember_me"> Remember me
+								            </label>
+								        </div>
+								    #}
+				<center><button class="btn btn-lg btn-primary mb-5 mt-5" type="submit">
+					S'identifier
+				</button>
+				</center
+				<P> Si vous êtes nouveau sur la plateforme veullez cliquer ici  <a href="/register"> S'inscrire </a> </p>
+			</div>
+		</section>
+	</form>
+{% endblock %}

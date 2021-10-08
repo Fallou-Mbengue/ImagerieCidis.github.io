@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NewAppointment
+{% endblock %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+	<section id="hero">
+		<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+			<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+			<div
+				class="carousel-inner" role="listbox">
+
+				<!-- Slide 1 -->
+				<div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg)">
+					<div class="container">
+						<h1>CIDIS</h1>
+						<h3 style="color: black;">Centre D'imagerie Diagnostique et Interventionnelle De Soumbedioune</h3>
+						<a href="#appointment" class="btn-get-started scrollto">Modifier Rendez-vous</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ========= Rendez-vous section =========== -->
+	<section id="appointment" class="appointment section-bg">
+		<div class="container" data-aos="fade-up">
+			<div class="section-title">
+				<h2>MODIFIER RENDEZ-VOUS</h2>
+				<p>Vous pouvez dès maintenant prendre rendez-vous directement en ligne, avec un professionnel de santé 24h/24 et 7j/7, en seulement quelques clics !</p>
+			</div>
+			{{ form_start(form) }}
+			<div class="row">
+				<div class="col-md-4 form-group">
+					{{ form_row(form.date_rendez_vous) }}
+				</div>
+				<div class="col-md-4 form-group mt-3 mt-md-0">
+					{{ form_row(form.service) }}
+				</div>
+				<div class="col-md-4 form-group mt-3 mt-md-0">
+					{{ form_row(form.heure) }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 form-group">
+					{{ form_row(form.examen) }}
+				</div>
+				<div class="col-md-4 form-group mt-3 mt-md-0">
+					{{ form_row(form.type_examen) }}
+				</div>
+				<div class="col-md-4 form-group mt-3 mt-md-0">
+					{{ form_row(form.prescripteur) }}
+				</div>
+			</div>
+			<div class="form-group mt-3">
+				{{ form_row(form.message) }}
+			</div>
+			<div class="text-center">
+				{{ form_row(form.save) }}
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</section>
+
+{% endblock %}
